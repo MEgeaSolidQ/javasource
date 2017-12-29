@@ -1,0 +1,6 @@
+/home/miguel/eclipse-workspace/MEGSortSecundario/src/main/java/hadoop/MEGSortSecundario/MEGSortSecundarioMapper.java
+/home/miguel/eclipse-workspace/MEGSortSecundario/src/main/java/hadoop/MEGSortSecundario/ClaveCompuestaComparator.java
+/home/miguel/eclipse-workspace/MEGSortSecundario/src/main/java/hadoop/MEGSortSecundario/PaisAnho.java
+/home/miguel/eclipse-workspace/MEGSortSecundario/src/main/java/hadoop/MEGSortSecundario/PaisPartitioner.java
+/home/miguel/eclipse-workspace/MEGSortSecundario/src/main/java/hadoop/MEGSortSecundario/MEGSortSecundarioReducer.java
+/home/miguel/eclipse-workspace/MEGSortSecundario/src/main/java/hadoop/MEGSortSecundario/MEGSortSecundarioDriver.java
