@@ -11,7 +11,8 @@ public class MEGcitingpatentsMapper  extends Mapper<Text , Text, Text, Text> {
 	public void map(Text key,Text Value, Context ctx)
 		throws IOException, InterruptedException {
 		if (!key.toString().equals("\"CITING\"")) { 
-		ctx.write(key, new Text(Value));
+		//ctx.write(key, new Text(Value));
+		ctx.write( new Text(Value),key);
 		 }
 		}
 	

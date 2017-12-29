@@ -32,7 +32,8 @@ public class MEGcitnumberbypatentchainedDriver  extends  Configured  implements 
 		 
 				Configuration  conf  =  getConf() ;
 				conf.set("mapreduce.input.keyvaluelinerecordreader.key.value.separator", ",");
-				//conf.set("mapreduce.textoutputformat.separator", ",");
+				conf.set(TextOutputFormat.SEPERATOR, ",");
+				
 				Job  job  =  Job.getInstance ( conf ) ;
 				job.setInputFormatClass(KeyValueTextInputFormat.class);
 				job.setOutputFormatClass(TextOutputFormat.class);
@@ -48,7 +49,7 @@ public class MEGcitnumberbypatentchainedDriver  extends  Configured  implements 
 				
 				ChainMapper.addMapper(job, MEGcitnumberbypatentchainedMapper.class, Text.class, Text.class, Text.class, Text.class, conf);
 				Configuration  reducerConf = new Configuration(false);
-				reducerConf.set("mapreduce.textoutputformat.separator", ",");
+				reducerConf.set(TextOutputFormat.SEPERATOR, ",");
 				ChainReducer.setReducer(job, MEGcitnumberbypatentchainedReducer.class , Text.class, Text.class, Text.class, Text.class, reducerConf);
 				ChainReducer.addMapper(job, MEGcitnumberbypatentchainedFinalMapper.class,  Text.class, Text.class, Text.class, IntWritable.class,reducerConf);
 				

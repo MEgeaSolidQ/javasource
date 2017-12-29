@@ -11,7 +11,8 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.KeyValueTextInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-import org.apache.hadoop.mapreduce.lib.output.TextFileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
+//import org.apache.hadoop.mapreduce.lib.output.TextFileOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
@@ -27,11 +28,12 @@ public class MEGSortSecundarioDriver extends  Configured  implements  Tool  {
 		 
 				Configuration  conf  =  getConf() ;
 				conf.set("mapreduce.input.keyvaluelinerecordreader.key.value.separator", "\t");
-				conf.set("mapreduce.output.Textoutputformat.separator", "," );
+				conf.set(TextOutputFormat.SEPERATOR, "->");
 				
 				Job  job  =  Job.getInstance ( conf ) ;
 
 				job.setInputFormatClass(SequenceFileInputFormat.class);
+				job.setOutputFormatClass(TextOutputFormat.class);
 				
 				job.setJobName ( "OrdenacionSecundaria" ) ;
 				job.setJarByClass ( getClass ( ) ) ;
