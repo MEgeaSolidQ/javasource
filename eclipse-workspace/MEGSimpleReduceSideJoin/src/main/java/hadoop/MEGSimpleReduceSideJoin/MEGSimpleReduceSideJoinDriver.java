@@ -57,7 +57,7 @@ public class MEGSimpleReduceSideJoinDriver  extends Configured implements Tool {
 	       * Usamos LongWritable para el número de patente para que las ordene
 	       * numéricamente */
 	      job.setMapOutputKeyClass(LongWritable.class);
-	      job.setMapOutputValueClass(Text.class);
+	      job.setMapOutputValueClass(MEGSimpleReduceSideJoinText.class);
 
 	      /* Especifica el tipo de la clave y el valor de salida final */
 	      job.setOutputKeyClass(LongWritable.class);
