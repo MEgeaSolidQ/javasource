@@ -17,6 +17,9 @@ import org.apache.hadoop.mapreduce.Mapper.Context;
 
 
 public class MEGSortSecundarioReducer extends Reducer<PaisAnho,IntWritable,Text,Text> {
+	enum PaisesConPatentes {
+		 menos_de_5, mas_de_5
+	 }
 	
 	Map<String, String> codigoDescPaises;
 	
@@ -37,9 +40,15 @@ public class MEGSortSecundarioReducer extends Reducer<PaisAnho,IntWritable,Text,
 	@Override
 	public void reduce (PaisAnho key, Iterable<IntWritable> values, Context ctxt ) throws IOException, InterruptedException  {
 		String lista="";
+		int counter=0;
 		for (IntWritable i :values ) {
 			lista+=key.getAnho().toString() + "->"+String.valueOf(i)+";";
+			counter++;
+			
 		}
+		if(counter<5) { ctxt.getCounter(PaisesConPatentes.menos_de_5).increment(1);}
+		else {ctxt.getCounter(PaisesConPatentes.mas_de_5).increment(1); }
+			
 		ctxt.write( new Text( key.getPais() + "-" +codigoDescPaises.get(key.getPais().toString())) , new Text(lista));
 	}
 }
