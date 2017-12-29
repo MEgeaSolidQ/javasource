@@ -7,18 +7,18 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 
-public class MEGSimpleReduceSideJoinReducer  extends Reducer<LongWritable,Text,LongWritable,Text> {
+public class MEGSimpleReduceSideJoinReducer  extends Reducer<LongWritable,MEGSimpleReduceSideJoinText,LongWritable,Text> {
 	@Override
-	public void reduce (LongWritable key, Iterable<Text> values, Context ctxt ) throws IOException, InterruptedException  {
+	public void reduce (LongWritable key, Iterable<MEGSimpleReduceSideJoinText> values, Context ctxt ) throws IOException, InterruptedException  {
 		String pais="";
 		String citas="";
-		for (Text valor :values ) {
-			if (valor.toString().contains("pais"))
+		for (MEGSimpleReduceSideJoinText valor :values ) {
+			if (valor.gettipo().toString() =="\"pais\"") 
 			{
-				pais+=valor.toString().split(",")[1];
+				pais+=valor.getvalor().toString();
 			}
-			if (valor.toString().contains("ncitas")) {
-				citas+=valor.toString().split(",")[1];
+			if (valor.gettipo().toString() =="\"ncitas\"") {
+				citas+=valor.getvalor().toString();
 				
 			}
 			
